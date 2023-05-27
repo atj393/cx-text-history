@@ -1,25 +1,25 @@
 {
-    "manifest_version": 2,
-    "name": "Text History",
+    "manifest_version": 3,
+    "name": "Input Field Saver",
     "version": "1.0",
-    "description": "Chrome extension to store typed text history",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Input Field Saver"
+    },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
     "background": {
-        "scripts": [
-            "background.js"
-        ],
-        "persistent": false
+        "service_worker": "background.js"
     },
     "content_scripts": [
         {
             "matches": [
                 "<all_urls>"
             ],
-            "exclude_matches": [],
             "js": [
-                "content.js"
+                "contentScript.js"
             ]
         }
     ]
